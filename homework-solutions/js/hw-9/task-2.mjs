@@ -14,23 +14,37 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  characters.push(character);
 }
+const newCharacter = { name: 'John', age: 45 };
+addCharacter(newCharacter);
+console.log(characters);
 
 function getCharacter(name) {
-  // Ваш код
+return characters.find (character => character.name === name)
 }
+const result = getCharacter ('Jack');
+console.log (result)
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+return characters.filter (character => character.age > minAge)
 }
+const resultage = getCharactersByAge(40);
+console.log (resultage)
 
-function updateCharacter(name, newCharacter) {
-  // Ваш код
+function updateCharacter(name, {name: newname, age: newage}) {
+  let update = getCharacter(name);
+  update.name = newname;
+  update.age = newage
+  return characters
 }
+console.log (updateCharacter('Fred', {name: 'Sanya', age: 100}))
 
 function removeCharacter(name) {
-  // Ваш код
+ const indexofel = characters.findIndex(el => el.name === name)
+  characters.splice (indexofel, 1)
+  return characters
 }
+console.log (removeCharacter ('Jack'))
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
